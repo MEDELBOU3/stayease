@@ -14,6 +14,16 @@
             --accent-color: #ff6b6b;
             --text-color: #333;
             --background-color: #f0f0f0;
+            --card-bg: #ffffff;
+        }
+        
+        .dark-theme {
+            --primary-color: #00a9a5;
+            --secondary-color: #ffd700;
+            --accent-color: #ff8c8c;
+            --text-color: #e0e0e0;
+            --background-color: #121212;
+            --card-bg: #1e1e1e;
         }
         
         body {
@@ -23,6 +33,9 @@
             padding: 0;
             background-color: var(--background-color);
             color: var(--text-color);
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 100 100"><rect fill="%23ffffff10" width="50" height="50" x="0" y="0"/><rect fill="%23ffffff10" width="50" height="50" x="50" y="50"/></svg>');
+            background-attachment: fixed;
+            transition: all 0.3s ease;
         }
         
         .container {
@@ -39,12 +52,29 @@
             padding: 40px 0;
             text-align: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 10%);
+            background-size: 20px 20px;
+            transform: rotate(30deg);
+            z-index: 1;
         }
         
         header h1 {
             margin: 0;
             font-size: 3em;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
         }
         
         nav {
@@ -81,11 +111,12 @@
         }
         
         .main-content {
-            background: #ffffff;
+            background: var(--card-bg);
             margin-top: 30px;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
         
         .room-gallery {
@@ -98,7 +129,6 @@
         .room-image {
             height: 200px;
             background-color: #eee;
-           
             display: flex;
             justify-content: center;
             align-items: center;
@@ -106,19 +136,75 @@
             color: #666;
             border-radius: 10px;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            cursor: pointer;
         }
         
-        .room-image img{
-            object-fit: cover;
-            background-position: center;
-            background-size: cover;
-        }
         .room-image:hover {
-            transform: scale(1.05);
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.2);
         }
         
+        
+        
+        
+        .room-image:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+            transition: all 0.3s ease;
+        }
+
+        .modal-content {
+            margin: 0 auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-content {
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0)}
+            to {transform:scale(1)}
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: var(--accent-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
         footer {
             background: linear-gradient(135deg, var(--primary-color), #005f5e);
             color: #ffffff;
@@ -136,11 +222,12 @@
             font-size: 24px;
             margin: 0 15px;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
         
         .social-icons a:hover {
             color: var(--secondary-color);
+            transform: scale(1.2);
         }
         
         .feature-list {
@@ -152,6 +239,11 @@
             margin-bottom: 10px;
             padding-right: 30px;
             position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-list li:hover {
+            transform: translateX(-10px);
         }
         
         .feature-list li:before {
@@ -170,11 +262,12 @@
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 20px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
         
         .btn:hover {
             background-color: #ff4f4f;
+            transform: translateY(-3px);
         }
         
         .map-container {
@@ -183,6 +276,8 @@
             height: 0;
             overflow: hidden;
             margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
         .map-container iframe {
@@ -192,6 +287,27 @@
             width: 100%;
             height: 100%;
             border: 0;
+        }
+        
+        #theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        #theme-toggle:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.1);
         }
         
         @media(max-width: 768px) {
@@ -211,6 +327,7 @@
 <body>
     <header>
         <div class="container">
+            <img width="100" height="100" src="https://img.icons8.com/bubbles/100/apartment.png" alt="apartment"/>
             <h1>شقة  في  الناضور</h1>
             <h1>Appartement a Nador</h1>
             <p>استمتع بإقامة لا تُنسى في أجمل مدن المغرب</p>
@@ -233,7 +350,7 @@
         <div class="main-content">
             <section id="about">
                 <h2><i class="fas fa-home"></i> عن الشقة</h2>
-                <p>مرحباً بكم في شقتنا الفاخرة في قلب مدينة الناضور الساحرة. تجمع هذه الشقة بين الأناقة العصرية والراحة المطلقة، مع إطلالات خلابة على المدينة والبحر. سواء كنتم في رحلة عمل أو عطلة عائلية، ستجدون هنا ملاذكم المثالي بعيداً عن صخب الحياة اليومية.</p>
+                <p>مرحباً بكم في شقتنا  في قلب مدينة الناضور الساحرة. تجمع هذه الشقة بين الأناقة العصرية والراحة المطلقة، مع إطلالات خلابة على المدينة والبحر. سواء كنتم في رحلة عمل أو عطلة عائلية، ستجدون هنا ملاذكم المثالي بعيداً عن صخب الحياة اليومية.</p>
             </section>
 
             <section id="amenities">
@@ -244,7 +361,7 @@
                     <li >مطبخ مجهز بالكامل </li>
                     <li>شرفة واسعة </li>
                     <li>حمام </li>
-                    <li>تكييف مركزي للتحكم في درجة الحرارة</li>
+                    
                     <li>واي فاي  مجاناً</li>
                     
                 </ul>
@@ -253,15 +370,29 @@
             <section id="gallery">
                 <h2><i class="fas fa-camera"></i> معرض الصور</h2>
                 <div class="room-gallery">
-                    <div class="room-image"><img src="badroom.jpeg" ></div>
-                    
-                    <div class="room-image"><img src="sallmanger.jpeg" ></div>
-                    <div class="room-image">المطب><img src="kitchen.jpeg"></div>
-                    <div class="room-image"><img src="sall.jpeg" ></div>
-                    <div class="room-image"><img src="bain.jpeg" ></div>
+                    <div class="room-image" onclick="openModal('badroom.jpeg')"><img src="badroom.jpeg" ></div>
+                    <div class="room-image"  onclick="openModal('sallmanger.jpeg')"><img src="sallmanger.jpeg" ></div>
+                    <div class="room-image" onclick="openModal('kitchen.jpeg')"><img src="kitchen.jpeg"></div>
+                    <div class="room-image" onclick="openModal('sall.jpeg')"><img src="sall.jpeg" ></div>
+                    <div class="room-image" onclick="openModal('bain.jpeg')"><img src="bain.jpeg" ></div>
                 </div>
             </section>
 
+            <div id="imageModal" class="modal">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img class="modal-content" id="modalImage">
+            </div>
+
+            <section id="places">
+                <h2><i class="fas fa-tree"></i>ما يمكنك زيارته؟</h2>
+                <div class="room-gallery">
+                    <div class="room-image" onclick="openModal('https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Corniche_de_Nador_%28Marchica%29.jpg/800px-Corniche_de_Nador_%28Marchica%29.jpg')"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Corniche_de_Nador_%28Marchica%29.jpg/800px-Corniche_de_Nador_%28Marchica%29.jpg" ></div>
+                    <div class="room-image"  onclick="openModal('https://i1.hespress.com/wp-content/uploads/2021/07/courougou4.jpg')"><img src="https://i1.hespress.com/wp-content/uploads/2021/07/courougou4.jpg" ></div>
+                    <div class="room-image" onclick="openModal('https://www.welovebuzz.com/wp-content/uploads/2019/07/1511272757-thumb_70_default_og_image.jpeg')"><img src="https://www.welovebuzz.com/wp-content/uploads/2019/07/1511272757-thumb_70_default_og_image.jpeg"></div>
+                    <div class="room-image" onclick="openModal('https://www.albadilassiassi.com/wp-content/uploads/2021/08/FB_IMG_1565807062959.jpg')"><img src="https://www.albadilassiassi.com/wp-content/uploads/2021/08/FB_IMG_1565807062959.jpg" ></div>
+                    <div class="room-image" onclick="openModal('https://i1.hespress.com/wp-content/uploads/2023/08/nador-centre-touristique-atalaayoune1.jpeg')"><img src="https://i1.hespress.com/wp-content/uploads/2023/08/nador-centre-touristique-atalaayoune1.jpeg" ></div>
+                </div>
+            </section>
             <section id="location">
                 <h2><i class="fas fa-map-marked-alt"></i> الموقع</h2>
                 <p>تقع شقتنا في موقع استراتيجي في قلب مدينة الناضور، على بعد دقائق معدودة من أهم المعالم السياحية والشواطئ الساحرة. استمتعوا بسهولة الوصول إلى المطاعم الشهيرة، الأسواق التقليدية، والمراكز التجارية الحديثة.</p>
@@ -286,13 +417,50 @@
             <div class="social-icons">
                 <a href="https://www.facebook.com/Simo.lbou3?mibextid=ZbWKwL" title="فيسبوك"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.instagram.com/simo_elb_3?igsh=MTVsYnlvZTlpaWVxdw==" title="إنستغرام"><i class="fab fa-instagram"></i></a>
-                <a href="#" title="تويتر"><i class="fab fa-x"></i></a>
+                <a href="https://x.com/Simo_Elbou3" title="تويتر"><i class="fab fa-x"></i></a>
                 <a href="http://wa.me/+2126676297766" target="_blank" title="واتساب"><i class="fab fa-whatsapp"></i></a>
             </div>
             <p>جميع الحقوق محفوظة &copy; 2024 - شقة فاخرة في الناضور</p>
         </div>
     </footer>
+
+    <button id="theme-toggle"><i class="fas fa-moon"></i></button>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            if (body.classList.contains('dark-theme')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // Modal script
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+
+        function openModal(imageSrc) {
+            modal.style.display = "block";
+            modalImg.src = imageSrc;
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        // Close modal when clicking outside the image
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>
-
-

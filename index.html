@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شقة فاخرة في الناضور - المغرب</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+        
+        :root {
+            --primary-color: #00817e;
+            --secondary-color: #ffd700;
+            --accent-color: #ff6b6b;
+            --text-color: #333;
+            --background-color: #f0f0f0;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #005f5e);
+            color: #ffffff;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        nav {
+            background: var(--secondary-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            padding: 0;
+            list-style: none;
+            text-align: center;
+            margin: 0;
+        }
+        
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .main-content {
+            background: #ffffff;
+            margin-top: 30px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .room-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .room-image {
+            height: 200px;
+            background-color: #eee;
+           
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: #666;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .room-image img{
+            object-fit: cover;
+            background-position: center;
+            background-size: cover;
+        }
+        .room-image:hover {
+            transform: scale(1.05);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), #005f5e);
+            color: #ffffff;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 40px;
+        }
+        
+        .social-icons {
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: #ffffff;
+            font-size: 24px;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .feature-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            margin-bottom: 10px;
+            padding-right: 30px;
+            position: relative;
+        }
+        
+        .feature-list li:before {
+            content: "\f058";
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 0;
+            color: var(--primary-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #ff4f4f;
+        }
+        
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        @media(max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            .container {
+                width: 95%;
+            }
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>شقة  في  الناضور</h1>
+            <h1>Appartement a Nador</h1>
+            <p>استمتع بإقامة لا تُنسى في أجمل مدن المغرب</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#about"><i class="fas fa-info-circle"></i> عن الشقة</a></li>
+                <li><a href="#amenities"><i class="fas fa-concierge-bell"></i> المميزات</a></li>
+                <li><a href="#gallery"><i class="fas fa-images"></i> معرض الصور</a></li>
+                <li><a href="#location"><i class="fas fa-map-marker-alt"></i> الموقع</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="main-content">
+            <section id="about">
+                <h2><i class="fas fa-home"></i> عن الشقة</h2>
+                <p>مرحباً بكم في شقتنا الفاخرة في قلب مدينة الناضور الساحرة. تجمع هذه الشقة بين الأناقة العصرية والراحة المطلقة، مع إطلالات خلابة على المدينة والبحر. سواء كنتم في رحلة عمل أو عطلة عائلية، ستجدون هنا ملاذكم المثالي بعيداً عن صخب الحياة اليومية.</p>
+            </section>
+
+            <section id="amenities">
+                <h2><i class="fas fa-star"></i> المميزات</h2>
+                <ul class="feature-list">
+                    <li>غرفتي نوم فسيحتين مع أسرّة مريحة</li>
+                    <li>صالة معيشة  مع تلفاز
+                    <li >مطبخ مجهز بالكامل </li>
+                    <li>شرفة واسعة </li>
+                    <li>حمام </li>
+                    <li>تكييف مركزي للتحكم في درجة الحرارة</li>
+                    <li>واي فاي  مجاناً</li>
+                    
+                </ul>
+            </section>
+
+            <section id="gallery">
+                <h2><i class="fas fa-camera"></i> معرض الصور</h2>
+                <div class="room-gallery">
+                    <div class="room-image"><img src="badroom.jpeg" ></div>
+                    
+                    <div class="room-image"><img src="sallmanger.jpeg" ></div>
+                    <div class="room-image">المطب><img src="kitchen.jpeg"></div>
+                    <div class="room-image"><img src="sall.jpeg" ></div>
+                    <div class="room-image"><img src="bain.jpeg" ></div>
+                </div>
+            </section>
+
+            <section id="location">
+                <h2><i class="fas fa-map-marked-alt"></i> الموقع</h2>
+                <p>تقع شقتنا في موقع استراتيجي في قلب مدينة الناضور، على بعد دقائق معدودة من أهم المعالم السياحية والشواطئ الساحرة. استمتعوا بسهولة الوصول إلى المطاعم الشهيرة، الأسواق التقليدية، والمراكز التجارية الحديثة.</p>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d815.8321689930814!2d-2.9300886933839134!3d35.12347062263224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sar!2sma!4v1724174973102!5m2!1sar!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2><i class="fas fa-phone-alt"></i> اتصل بنا</h2>
+                <p>نحن هنا لمساعدتكم في أي استفسار أو حجز. لا تترددوا في التواصل معنا:</p>
+                <p><strong>الهاتف:</strong> <a href="tel:+212667629776" class="btn">+212 667-629776 <i class="fas fa-phone"></i></a></p>
+                <p><strong>البريد الإلكتروني:</strong> <a href="mailto:simo.elb.2005@gmail.com" class="btn">simo.elb.2005@gmail.com <i class="fas fa-envelope"></i></a></p>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <h3>شقة فاخرة في الناضور</h3>
+            <p>استمتع بإقامة مميزة في قلب المدينة</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/Simo.lbou3?mibextid=ZbWKwL" title="فيسبوك"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/simo_elb_3?igsh=MTVsYnlvZTlpaWVxdw==" title="إنستغرام"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="تويتر"><i class="fab fa-x"></i></a>
+                <a href="http://wa.me/+2126676297766" target="_blank" title="واتساب"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p>جميع الحقوق محفوظة &copy; 2024 - شقة فاخرة في الناضور</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+
